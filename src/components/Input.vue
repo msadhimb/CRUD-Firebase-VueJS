@@ -46,7 +46,8 @@ export default {
   },
   methods: {
     async submit() {
-      this.forms.dataAdded = new Date();
+      const date = new Date();
+      this.forms.dataAdded = date.toLocaleString("en-US");
       await addDoc(this.dbCollection, this.forms).then(() => {
         return alert("Data berhasil ditambahkan");
       });

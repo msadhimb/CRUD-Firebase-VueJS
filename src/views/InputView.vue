@@ -30,4 +30,19 @@ export default { components: { List } };
   position: absolute;
   right: 23.5rem;
 }
+
+@media (max-width: 992px) {
+  .header h1 {
+    z-index: 2;
+    padding-right: 10rem;
+    padding-top: 5rem;
+    font-size: 30px;
+  }
+  .cat {
+    z-index: 1;
+    width: 40%;
+    position: absolute;
+    right: 17rem;
+  }
+}
 </style>

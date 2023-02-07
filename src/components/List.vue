@@ -114,6 +114,8 @@ import {
   getDocs,
   deleteDoc,
   updateDoc,
+  orderBy,
+  query,
 } from "firebase/firestore";
 
 export default {
@@ -132,8 +134,14 @@ export default {
   },
   methods: {
     async getGuests() {
-      const response = await getDocs(this.dbCollection);
-      this.guests = response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      const response = await getDocs(
+        query(this.dbCollection, orderBy("dataAdded", "asc"))
+      );
+      const guestsTemp = response.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      this.guests = guestsTemp;
     },
 
     async deleteGuest(id) {
